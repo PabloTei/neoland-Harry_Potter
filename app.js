@@ -1,3 +1,4 @@
+// quiero que me pinte por pantalla los personajes de la casa "Gryffindor y que esten vivos"
 const harryPottercharacters = {
 results: [
     {
@@ -12092,37 +12093,41 @@ results: [
 ]
 }
 
-//Recuperamos el contenedor de HTML -> NODO
+//Enlace con documento HTML
 const container = document.querySelector("#container");
 console.log(container);
 
-//Añadir función para que pinte por pantalla los elementos de la lista que hemos creado
+//Añadir función para que pinte por pantalla los elementos de la lista que hemos creado, que llamaremos después en la función
 const printInDocument = (list) => {
-    //Y ahora iteramos en la lista y por cada uno de los item...
+    //Ahora añadimos un bucle para que cada item de la lista se imprima por pantalla
     for (const item of list) {
-        container.innerHTML += `
+            container.innerHTML += `
             <div class='card'>
                 <h2>${item.name}</h2>
-                <p>${item.status}</p>
-                <p>${item.origin.name}</p>
-                <p>${item.location.name}</p>
+                <p>${item.gender}</p>
+                <p>${item.house}</p>
+                <p>${item.actor}</p>
                 <img src=${item.image} alt=${item.name} />
             </div>
             `;
+        
     }
 } 
 // Creamos funcion donde recorremos la lista characters mapeando los datos solicitados y los meteremos en una variable
 const myFunctionMap = () => {
-    const extract = harryPottercharacters.results.map((character) => ({
-        name: character.name,
-        gender: character.gender,
-        house: character.house,
-        actor: character.actor,
-        image: character.image,
-    }))
+    const extract = harryPottercharacters.results.map((character) => character.house === "Gryffindor" ? {name: character.name, gender: character.gender, house: character.house, actor: character.actor, image: character.image} : false)
+      
 
     printInDocument(extract);
 }
 
 myFunctionMap();
-aasda
+
+
+/*     const extract = harryPottercharacters.results.map((character) => ({
+    name: character.name,
+    gender: character.gender,
+    house: character.house,
+    actor: character.actor,
+    image: character.image,
+*/
