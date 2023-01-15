@@ -12097,7 +12097,7 @@ results: [
 const container = document.querySelector("#container");
 console.log(container);
 
-//Añadir función para que pinte por pantalla los elementos de la lista que hemos creado, que llamaremos después en la función
+// Programa para saber cuantas personas han fallecido de la casa Griffyndor
 const printInDocument = (list) => {
     //Ahora añadimos un bucle para que cada item de la lista se imprima por pantalla
     for (const item of list) {
@@ -12115,8 +12115,7 @@ const printInDocument = (list) => {
 } 
 // Creamos funcion donde recorremos la lista characters mapeando los datos solicitados y los meteremos en una variable
 const myFunctionMap = () => {
-    const extract = harryPottercharacters.results.map((character) => character.house === "Gryffindor" ? {name: character.name, gender: character.gender, house: character.house, actor: character.actor, image: character.image} : false)
-      
+    const extract = harryPottercharacters.results.map((character) => character.house.includes("Gryffindor") && character.alive === false ? {name: character.name, gender: character.gender, house: character.house, actor: character.actor, image: character.image} : {name: "", gender: "", house: "", actor: "", image: ""})
 
     printInDocument(extract);
 }
